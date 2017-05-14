@@ -53,7 +53,7 @@ def processData(data):
 #            measurement = -measurement
         images.append(image)
         measurements.append(measurement)
-        images.append(cv2.fliplr(image))
+        images.append(cv2.flip(image, 1))
         measurements.append(-measurement)
 
     return np.array(images), np.array(measurements)
