@@ -169,6 +169,6 @@ def saveModel(model):
 if __name__ == '__main__':
     data = loadData('data/driving_log.csv')
     X_train, y_train = processData(data)
-    model = createModel()
+    model = createModel_old()
     model = run(model, X_train, y_train)
     saveModel(model)
