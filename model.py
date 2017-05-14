@@ -48,11 +48,13 @@ def processData(data):
             
         image = cv2.imread(current_path)
         measurement = float(row['steering'])
-        if not idx % 2:
-            image = np.fliplr(image)
-            measurement = -measurement
+#        if not idx % 2:
+#            image = np.fliplr(image)
+#            measurement = -measurement
         images.append(image)
         measurements.append(measurement)
+        images.append(cv2.fliplr(image))
+        measurements.append(-measurement)
 
     return np.array(images), np.array(measurements)
 
@@ -98,7 +100,7 @@ def createModel():
     # set up cropping2D layer
     model = Sequential()
     model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=input_shape))
-    model.add(Cropping2D(cropping=((50,20), (0,0))))
+    model.add(Cropping2D(cropping=((70,25), (0,0))))
     model.add(Lambda(tfResize))
     model.add(Convolution2D(24, 5, 5, subsample=(2,2), activation="relu"))
     model.add(Convolution2D(36, 5, 5, subsample=(2,2), activation="relu"))
