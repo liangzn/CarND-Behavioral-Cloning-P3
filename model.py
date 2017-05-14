@@ -42,19 +42,16 @@ def processData(data):
     measurements = []
         
     for idx, row in data.iterrows():
-        source_path = row['center']
-        filename = source_path.split('/')[-1]
-        current_path = 'data/IMG/' + filename
-            
-        image = cv2.imread(current_path)
-        measurement = float(row['steering'])
-#        if not idx % 2:
-#            image = np.fliplr(image)
-#            measurement = -measurement
-        images.append(image)
-        measurements.append(measurement)
-        images.append(cv2.flip(image, 1))
-        measurements.append(-measurement)
+        for i in range(3)
+            source_path = row[i]
+            filename = source_path.split('/')[-1]
+            current_path = 'data/IMG/' + filename
+            image = cv2.imread(current_path)
+            measurement = float(row['steering'])
+            images.append(image)
+            measurements.append(measurement)
+            images.append(cv2.flip(image, 1))
+            measurements.append(-measurement)
 
     return np.array(images), np.array(measurements)
 
