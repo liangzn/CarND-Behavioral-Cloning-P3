@@ -47,10 +47,13 @@ def processData(data):
         current_path = 'data/IMG/' + filename
         image = cv2.imread(current_path)
         measurement = float(row['steering'])
+        if not idx % 2:
+            image = np.fliplr(image)
+            measurement = -measurement
         images.append(image)
         measurements.append(measurement)
-        images.append(cv2.flip(image, 1))
-        measurements.append(-measurement)
+        #images.append(cv2.flip(image, 1))
+        #measurements.append(-measurement)
 
     return np.array(images), np.array(measurements)
 
