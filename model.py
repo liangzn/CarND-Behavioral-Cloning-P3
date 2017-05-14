@@ -51,7 +51,7 @@ def processData(data):
                         measurement = -measurement
                 images.append(image)
             measurements.append(measurement)
-    
+        
         return np.array(images), np.array(measurements)
 
 def crop(x):
@@ -72,17 +72,17 @@ def preprocess(x):
                         [0, h]
                         ], dtype = "float32")
             
-                        dst = np.array([
-                                        [0, 0],
-                                        [w, 0],
-                                        [w, h],
-                                        [0, h]
-                                        ], dtype = "float32")
-                        
-                        # calculate the perspective transform matrix and warp
-                        # the perspective to grab the screen
-                        M = cv2.getPerspectiveTransform(src, dst)
-                        warp = cv2.warpPerspective(x, M, (w, h))
+            dst = np.array([
+                            [0, 0],
+                            [w, 0],
+                            [w, h],
+                            [0, h]
+                            ], dtype = "float32")
+                
+                # calculate the perspective transform matrix and warp
+                # the perspective to grab the screen
+                M = cv2.getPerspectiveTransform(src, dst)
+                    warp = cv2.warpPerspective(x, M, (w, h))
                         
         return warp
 
@@ -127,7 +127,7 @@ def plot_model(model):
 def run_via_generator(model, X_train, y_train):
     # define data preparation
     datagen = ImageDataGenerator(
-                                 preprocessing_function=preprocess, 
+                                 preprocessing_function=preprocess,
                                  )
         
         # fit parameters from data
