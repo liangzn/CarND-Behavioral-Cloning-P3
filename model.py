@@ -91,31 +91,12 @@ def tfResize(x):
     import tensorflow as tf # Keep this here so it's loaded in the model during drive
     return tf.image.resize_images(x, (66, 200))
 
-def createModel():
-    input_shape = (160,320,3)
-    
-    model = Sequential()
-    model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=input_shape))
-    model.add(Cropping2D(cropping=((70,25), (0,0))))
-    #model.add(Lambda(tfResize))
-    model.add(Convolution2D(24, 5, 5, subsample=(2, 2), activation="relu"))
-    model.add(Convolution2D(36, 5, 5, subsample=(2, 2), activation="relu"))
-    model.add(Convolution2D(48, 5, 5, subsample=(2, 2), activation="relu"))
-    model.add(Convolution2D(64, 3, 3, activation="relu"))
-    model.add(Convolution2D(64, 3, 3, activation="relu"))
-    model.add(Flatten())
-    model.add(Dense(100))
-    model.add(Dense(50))
-    model.add(Dense(10))
-    
-    return model
-
 def createModel_old():
     input_shape = (160,320,3)
     
     model = Sequential()
     model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=input_shape))
-    model.add(Cropping2D(cropping=((70,25), (0,0))))
+    model.add(Cropping2D(cropping=((50,20), (0,0))))
     model.add(Lambda(tfResize))
     model.add(Convolution2D(24, 5, 5, subsample=(2,2), activation="relu"))
     model.add(Convolution2D(36, 5, 5, subsample=(2,2), activation="relu"))
@@ -169,6 +150,6 @@ def saveModel(model):
 if __name__ == '__main__':
     data = loadData('data/driving_log.csv')
     X_train, y_train = processData(data)
-    model = createModel_old()
+    model = createModel()
     model = run(model, X_train, y_train)
     saveModel(model)
