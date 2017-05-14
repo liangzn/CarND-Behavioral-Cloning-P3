@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import pandas as pd
-import cv2, csv, numpy as np
+import cv2
+import csv
+import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from keras.models import Sequential, Model, load_model
