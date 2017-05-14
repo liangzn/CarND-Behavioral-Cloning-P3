@@ -4,7 +4,7 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
 
-datadir = 'data/data/'
+datadir = 'data/'
 csvfile = datadir + 'driving_log.csv'
 
 # Read driving_log.csv into an array of lines of text
