@@ -91,7 +91,7 @@ def tfResize(x):
     import tensorflow as tf # Keep this here so it's loaded in the model during drive
     return tf.image.resize_images(x, (66, 200))
 
-def createModel_old():
+def createModel():
     input_shape = (160,320,3)
     
     model = Sequential()
