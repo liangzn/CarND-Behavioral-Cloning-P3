@@ -13,12 +13,14 @@ EPOCHS = 2
 def loadData(filename):
     df = pd.read_csv(filename, header=None, names = ["center", "left", "right", "steering", "throttle", 'break', 'speed'])
         
-        if SHOW_GRAPHS: graphData(df['steering'], 'Pre-normalizedSteering Angle')
+        if SHOW_GRAPHS: 
+            graphData(df['steering'], 'Pre-normalizedSteering Angle')
         
         df = df.drop(df.query('steering==0').sample(frac=0.90).index)
         # df = df.drop(df.query('abs(steering)==1').sample(frac=0.75).index)
         
-        if SHOW_GRAPHS: graphData(df['steering'], 'Post-normalizedSteering Angle')
+        if SHOW_GRAPHS: 
+            graphData(df['steering'], 'Post-normalizedSteering Angle')
         
         print(df.describe())
         
