@@ -136,12 +136,12 @@ def run_via_generator(model, X_train, y_train):
     datagen.fit(X_train)
     
     model.fit_generator(datagen.flow(X_train, y_train, batch_size=16),
-                        steps_per_epoch=len(X_train), epochs=EPOCHS)
+                        steps_per_epoch=len(X_train), nb_epoch=EPOCHS)
     return model
 
 def run(model, X_train, y_train):
     model.compile(loss='mse', optimizer='adam')
-    model.fit(X_train, y_train, validation_split=0.2, shuffle=True, epochs=EPOCHS)
+    model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=EPOCHS)
     return model
 
 def saveModel(model):
