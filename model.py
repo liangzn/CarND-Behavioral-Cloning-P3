@@ -42,7 +42,7 @@ def processData(data):
     measurements = []
         
     for idx, row in data.iterrows():
-        for i in range(3)
+        for i in range(3):
             source_path = row[i]
             filename = source_path.split('/')[-1]
             current_path = 'data/IMG/' + filename
