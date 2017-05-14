@@ -12,7 +12,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from scipy.stats import norm
 
 SHOW_GRAPHS = False
-EPOCHS = 2
+EPOCHS = 3
 
 def loadData(filename):
     df = pd.read_csv(filename, header=None, names = ["center", "left", "right", "steering", "throttle", 'break', 'speed'])
