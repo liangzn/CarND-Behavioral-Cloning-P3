@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from keras.models import Sequential, Model, load_model
-from keras.layers import Cropping2D, Lambda, Conv2D, Flatten, Dense, Dropout
+from keras.layers import Cropping2D, Lambda, Convolution2D, Flatten, Dense, Dropout
 from keras.preprocessing.image import ImageDataGenerator
 from scipy.stats import norm
 
@@ -100,14 +100,14 @@ def createModel():
     model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=input_shape))
     model.add(Cropping2D(cropping=((50,20), (0,0))))
     model.add(Lambda(tfResize))
-    model.add(Conv2D(24, (5, 5), strides=(2,2), activation="relu"))
-    model.add(Conv2D(36, (5, 5), strides=(2,2), activation="relu"))
+    model.add(Convolution2D(24, (5, 5), strides=(2,2), activation="relu"))
+    model.add(Convolution2D(36, (5, 5), strides=(2,2), activation="relu"))
     model.add(Dropout(0.2))
-    model.add(Conv2D(48, (5, 5), strides=(2,2), activation="relu"))
+    model.add(Convolution2D(48, (5, 5), strides=(2,2), activation="relu"))
     model.add(Dropout(0.2))
-    model.add(Conv2D(64, (3, 3), activation="relu"))
+    model.add(Convolution2D(64, (3, 3), activation="relu"))
     model.add(Dropout(0.2))
-    model.add(Conv2D(64, (3, 3), activation="relu"))
+    model.add(Convolution2D(64, (3, 3), activation="relu"))
     model.add(Dropout(0.2))
     model.add(Flatten())
     model.add(Dense(100))
