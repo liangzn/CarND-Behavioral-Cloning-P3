@@ -174,7 +174,7 @@ validation_steps = np.ceil( len( validation_samples )/32 ).astype( np.int32 )
 #                    initial_epoch=0,
 #                    nb_epoch=3)
 
-model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=EPOCHS)
+model.fit(train_generator, validation_samples, validation_split=0.2, shuffle=True, nb_epoch=2)
 
 model.save( 'model.h5' )
 
