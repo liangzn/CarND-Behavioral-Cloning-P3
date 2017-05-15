@@ -162,17 +162,19 @@ validation_steps = np.ceil( len( validation_samples )/32 ).astype( np.int32 )
 #
 # Upgrading to Keras 2 didn't appear to break anything.  It does warn that I should update
 # Convolution2D to Conv2D for future proofing.
-model.fit_generator( train_generator,
-                    samples_per_epoch = len(train_samples),
-                    verbose=1,
-                    callbacks=None,
-                    validation_data=validation_generator,
-                    nb_val_samples=len(validation_samples),
-                    class_weight=None,
-                    max_q_size=10,
-                    pickle_safe=False,
-                    initial_epoch=0,
-                    nb_epoch=3)
+#model.fit_generator( train_generator,
+#                    samples_per_epoch = len(train_samples),
+#                    verbose=1,
+#                    callbacks=None,
+#                    validation_data=validation_generator,
+#                    nb_val_samples=len(validation_samples),
+#                    class_weight=None,
+#                    max_q_size=10,
+#                    pickle_safe=False,
+#                    initial_epoch=0,
+#                    nb_epoch=3)
+
+model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=EPOCHS)
 
 model.save( 'model.h5' )
 
