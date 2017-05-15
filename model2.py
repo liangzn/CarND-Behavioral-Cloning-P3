@@ -28,7 +28,7 @@ from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split( lines, test_size=0.2 )
 
 X_train = []
-X_train = []
+y_train = []
 
 # Generator for fit data
 def generator( samples, batch_size=32 ):
