@@ -27,6 +27,9 @@ from sklearn.model_selection import train_test_split
 # 80% of the data will be used for training.
 train_samples, validation_samples = train_test_split( lines, test_size=0.2 )
 
+X_train = []
+X_train = []
+
 # Generator for fit data
 def generator( samples, batch_size=32 ):
     num_samples = len( samples )
@@ -147,7 +150,7 @@ model.compile( loss='mse', optimizer='adam' )
 train_steps = np.ceil( len( train_samples )/32 ).astype( np.int32 )
 validation_steps = np.ceil( len( validation_samples )/32 ).astype( np.int32 )
 
-# model.fit( X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5 )
+model.fit( X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=5 )
 #
 # The online documentation for fit_generator
 # ( https://keras.io/models/model/#fit_generator )
@@ -174,7 +177,6 @@ validation_steps = np.ceil( len( validation_samples )/32 ).astype( np.int32 )
 #                    initial_epoch=0,
 #                    nb_epoch=3)
 
-model.fit(train_generator, validation_samples, validation_split=0.2, shuffle=True, nb_epoch=2)
 
 model.save( 'model.h5' )
 
